@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch-A-Sketch</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <h1 style="text-align: center;">Etch-A-Sketch</h1>
+    <div id="main">
+        <div id="options">
+            <input type="color" id="pencolor" value="#000000">
+            <input type="color" id="bgcolor" value="#ffffff">
+            <button id="rgb">Random Color</button>
+            <button id="shading"> Shading</button>
+            <button id="erase">Eraser</button>
+            <button id="clear">Clear</button>
+            <input type="range" id="slider" min="1" max="100" value="16" onmousemove="rangeSlider(this.value)" onchange="chngval(this.value)">
+            <p>Grid Size: <span class="range-value">16</span> x <span class="range-value">16</span></p>
+        </div>
+        <div id="grid">
+
+        </div>
+    </div>
+    <h2 style="text-align: center;">Copyright © Vanderbylt 2022</h2>
+    <script src="script.js"></script>
+</body>
+</html>
