@@ -16,10 +16,10 @@
             <input type="color" id="bgcolor" value="#ffffff">
             <button id="rgb">Random Color</button>
             <button id="shading"> Shading</button>
-            <button id="erase">Eraser</button>
+            <button id="erase"> Toggle Eraser</button>
             <button id="clear">Clear</button>
-            <input type="range" id="slider" min="1" max="100" value="16" onmousemove="rangeSlider(this.value)" onchange="chngval(this.value)">
-            <p>Grid Size: <span class="range-value">16</span> x <span class="range-value">16</span></p>
+            <input type="range" id="slider" min="1" max="100" value="16" onmousemove="rangeSlider(this.value)" onchange="gridCreation(this.value)">
+            <p>Grid Size: <span id="range-value">16 x 16</span></p>
         </div>
         <div id="grid">
 

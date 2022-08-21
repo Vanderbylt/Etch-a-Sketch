@@ -19,16 +19,13 @@ body{
     padding: 16px;
 }
 
-#grid {
-    
-    height: 700px;
-    width: 700px;
-    margin:15px;
-    
-}
-.cell {
+
+.rows{
     display: flex;
-    height:auto;
-    width: auto;
-    justify-content: stretch;
+}
+.hover{
+    background-color: aqua;
+}
+.cell{
+    border: 0.5px solid grey;
 }
