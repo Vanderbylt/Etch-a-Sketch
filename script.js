@@ -6,13 +6,21 @@ const eraser = document.getElementById('erase');
 const clear = document.getElementById('clear');
 const range = document.getElementById('range-value');
 const grid = document.getElementById('grid')
+const grdlines = document.getElementById('grdlines');
 let currentlyActive = false,
 cell,
 rows,
-erase = false;
+sketch = false,
+erase = false,
+shde = false,
+glines = false,
+mirage = false;
 bgcolor.addEventListener('change',()=>{grid.style.backgroundColor = `${bgcolor.value}`});
 clear.addEventListener('click',clean);
 eraser.addEventListener('click',era)
+grdlines.addEventListener('click',toggleGridlines);
+rgb.addEventListener('click',rainbow);
+shade.addEventListener('click',shading);
 
 //range slider
 function rangeSlider(value){
@@ -54,7 +62,26 @@ grid.addEventListener('click',togglePen)
 function activatePen(e){
      if(erase){
           e.target.style.backgroundColor = `${bgcolor.value}`
-     }else{
+     }
+     else if(mirage){
+          var num = Math.round(0xffffff * Math.random());
+          var r = num >> 16;
+          var g = num >> 8 & 255;
+          var b = num & 255;
+          e.target.style.backgroundColor= 'rgb(' + r + ', ' + g + ', ' + b + ')';
+     }
+     else if(sketch){
+          let currentOpacity = Number(e.target.style.backgroundColor.slice(-3,-1));
+          console.log(currentOpacity+0.1);
+          let newOpacity = currentOpacity+0.1;
+          if(newOpacity===1) return;
+          e.target.style.backgroundColor =`rgba(0,0,0,${newOpacity})`
+
+
+
+          
+     }
+     else{
           e.target.style.backgroundColor = `${pcolor.value}`;
      }
 
@@ -64,12 +91,12 @@ function togglePen(){
      if(!currentlyActive){
           cells.forEach(element=>{element.addEventListener('mouseleave',activatePen)});
           currentlyActive = true; 
-          console.log(currentlyActive);
+          
      }
      else{
           cells.forEach(element=>{element.removeEventListener('mouseleave',activatePen)});
           currentlyActive = false;
-          console.log(currentlyActive);
+          
      }
 }
 //clear
@@ -86,4 +113,40 @@ function era(){
           erase = false;
      }
 }
+//shading
      
+function shading(){
+     clean();
+     bgcolor.value = '#ffffff';
+     pcolor.value = '#000000';
+     let cells = document.querySelectorAll('.cell');
+     cells.forEach(item => {item.style.backgroundColor=`rgba(0,0,0,0)`});
+     if(!sketch){
+          sketch = true;
+     }
+     else{
+          sketch = false;
+     }
+
+}
+//grid-lines
+function toggleGridlines(){
+     let cells = document.querySelectorAll('.cell');
+     if(glines){
+          cells.forEach(item => {item.classList.remove('gridl')});
+          glines = false;
+     }
+     else{
+          cells.forEach(item=>{item.classList.add('gridl')});
+          glines = true;
+     }
+}
+//rainbow
+function rainbow(){
+     if(!mirage){
+          mirage = true;
+     }
+     else{
+          mirage = false
+     }
+}

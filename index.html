@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-A-Sketch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Mouse+Memoirs&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     
 </head>
@@ -12,11 +15,20 @@
     <h1 style="text-align: center;">Etch-A-Sketch</h1>
     <div id="main">
         <div id="options">
-            <input type="color" id="pencolor" value="#000000">
-            <input type="color" id="bgcolor" value="#ffffff">
-            <button id="rgb">Random Color</button>
-            <button id="shading"> Shading</button>
+            <div style="display: flex; flex-direction:column; align-items:baseline; gap: 16px;">
+            <span>
+                <input type="color" id="pencolor" value="#000000">
+                Pen Color
+            </span>
+            <span>
+                <input type="color" id="bgcolor" value="#ffffff">
+                Background Color
+            </span>
+            </div>
+            <button id="rgb">Toggle Rainbow</button>
+            <button id="shading">Toggle Shading</button>
             <button id="erase"> Toggle Eraser</button>
+            <button id="grdlines">Toggle Grid-Lines</button>
             <button id="clear">Clear</button>
             <input type="range" id="slider" min="1" max="100" value="16" onmousemove="rangeSlider(this.value)" onchange="gridCreation(this.value)">
             <p>Grid Size: <span id="range-value">16 x 16</span></p>
